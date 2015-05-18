@@ -1,7 +1,7 @@
-Kamstrup multical 601
+Kamstrup Multical 601
 ,,,,,,,,,,,,,,,,,,,,,
 
-The kamstrup multical 601 protocol is a serial protocol with 1200 bits per second.
+The Kamstrup Multical 601 protocol is a serial protocol with 1200 bits per second.
 The protocol is a request-response protocol where the data is encoded in many frames
 where each is 8 bits.
 
@@ -26,16 +26,16 @@ For heat meters the destination address is 3Fh. The logger top module use 7Fh an
 Included in the data link layer is a CRC with reference to the CCITT-standard using the polynomial 1021h. Only deviation from the standard is the initial value, which is 0000h instead of FFFFh.
 The CRC result is calculated for destination address, CID and data. CRC is transmitted with MSByte first and LSByte last.
 
-I decided to include a table of all possible crc checksums for the given length in my code so i did not have
+I decided to include a table of all possible CRC checksums for the given length in my code so I did not have
 to compute it on each frame.
 In the *user/kmp.c file you can see the checksum table.
 
 **Application layer**
 
 Most data in the application layer is handled in a KMP register format.
-You use command id's (CID's) to tell the kamstrup which registers you are interested in.
+You use command id's (CID's) to tell the Kamstrup which registers you are interested in.
 
-The kamstrup specifies a variable lenght register format.
+The Kamstrup specifies a variable length register format.
 This format includes three bytes show below:
 
 .. image::
@@ -58,9 +58,9 @@ The integer represents the value before translated into the floating point value
 Because the Kamstrup protocol only uses base 10 floating points, later computations are easily done
 by modifying the point index by dividing with 10.
 
-In order to compute power of values i needed a power function. This exist in libmath. But i didnt want to link
-all libmath into this project just to gain a power function, and when i did it also gave compile errors for lack of flash.
-So i wrote my own power function, this can be seen in *user/kmp.c - kmp_pow*.
+In order to compute power of values I needed a power function. This exist in libmath. But I didnt want to link
+all libmath into this project just to gain a power function, and when I did it also gave compile errors for lack of flash.
+So I wrote my own power function, this can be seen in *user/kmp.c - kmp_pow*.
 
 Libc printf does not have its own string formatter for floating point numbers. So a function had to be written in order
 to translate the received numbers into strings ready for transmission.

@@ -36,12 +36,12 @@ The reasons can be economically but also ecologically since we can also corellat
 Power considerations
 ....................
 
-The esp8266 firmware is designed with minimum power consumption in mind and the ambition is to implement the following power usage decreasing messures:
+The ESP8266 firmware is designed with minimum power consumption in mind and the ambition is to implement the following power usage decreasing messures:
 
 **deep sleep**
 
 Implement deep sleep and reduce sample frequency to once an hour.
-The esp8266 only uses about 10mA when in deep sleep and the rtc continues to hold precision.
+The ESP8266 only uses about 10mA when in deep sleep and the RTC continues to hold precision.
 
 **MQTT**
 
@@ -78,9 +78,9 @@ MQTT together with sleep will create a unique low power scenario where we can do
 	   }
 
 The diagram shows how the buffering together with deep sleep creates the foundation for infrequent bursts of transmission when the conenction is established again later.
-The size of the buffer, and thereby connected spi flash, describes the max size of the buffer queue and thereby how many sleep cycles you can go through before loosing data.
+The size of the buffer, and thereby connected SPI flash, describes the max size of the buffer queue and thereby how many sleep cycles you can go through before loosing data.
 
-This of course can't happen without the existance of a DRAM flash added to the pcb for data persistence during deep sleep.
+This of course can't happen without the existance of a DRAM flash added to the PCB for data persistence during deep sleep.
 
 .. rubric:: Footnotes
 
